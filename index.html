@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8">
+  <title>table-layout</title>
+  <style>
+   table {
+    table-layout: fixed; /* Фиксированная ширина ячеек */
+    width: 100%; /* Ширина таблицы */
+   }
+   .col1 { width: 160px; }
+   .coln { width: 160px; }
+  </style>
+ </head>
+ <body>
+  <h2>Проект "ShipCabin" Vue3 и JS</h2>
+  <table border="1">
+   <col class="col1">
+   <col span="3" class="coln">
+   <tr> 
+    <td>&nbsp;</td>
+    <td>Тег</td><td>Обработчик VueJS</td>
+	<td>JS</td>
+   </tr>
+   <tr> 
+	   <td>Загружается фотография</td><td>----</td><td>тернарный оператор: imageData ?  imageFileName : "Файл не выбран"</td><td>function onSelectImage() {<br/>
+	  const input = imageInput.value;<br/>
+	  const files = input.files<br/>
+	  if (files && files[0]) {<br/>
+		const reader = new FileReader<br/>
+		reader.onload = e => {<br/>
+		  imageData.value = e.target.result<br/>
+		  imageFileName.value = files[0].name<br/>
+		  emit('imageSelected', imageData.value)<br/>
+		}<br/>
+		reader.readAsDataURL(files[0])<br/>
+	  }
+	}</td>
+   </tr>
+   <tr>
+		<td>Вводится ФИО и эл. почта</td><td><input type="text" name="browser" value="ie"><br/><input type="email" name="browser" value="ie"><br/></td><td>----</td><td>----</td>
+   </tr>
+   <tr>
+		<td>Вводится есть или нет питомец, если есть то количество</td>
+		<td><select name="browser"><br/>
+				<option value="1">1</option><br/>
+				<option value="2">2</option><br/>
+			  </select></td><br/>
+	  <td>emit('petSelected', pet.value)<br/>
+	}</td><td>function onPetSelect() {<br/>
+	  if (!pet.value) {<br/>
+		petsCount.value = 0<br/>
+	  }<br/></td>
+   </tr>
+    <tr>
+		<td>Вводится количество сопровождающих</td><td><input type="number" name="browser" value="ie"></td><td>function onSubmit() {
+  emit('submit', {pet: pet.value, petsCount: parseInt(petsCount.value), peopleCount: parseInt(peopleCount.value)})
+}</td>
+		<td>function onInputPeopleNumber(event) {<br/>
+  console.log(event.target.value)<br/>
+  if (event.target.value == '') {<br/>
+    peopleCount.value = 0<br/>
+    return<br/>
+  }<br/>
+  const value = parseInt(event.target.value)<br/>
+  if (value >=0 && value <= 100) {<br/>
+    peopleCount.value = value<br/>
+  } else {<br/>
+    event.target.value = peopleCount.value<br/>
+  }<br/>
+}</td>
+	</tr>
+    <tr>
+		<td>Считается сумма питомцев и сопровождающих и показывается какая каюта предлагается</td><td>Дерево</td><td>Дерево</td><td>Дерево</td>
+	</tr>
+	<tr>
+		<td>Условный рендеринг компонентов и классов</td><td>Дерево</td><td>Дерево</td><td>Дерево</td>
+	</tr>
+  </table> 
+ </body>
+</html>
